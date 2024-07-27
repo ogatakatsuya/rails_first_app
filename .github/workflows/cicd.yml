@@ -1,0 +1,59 @@
+name: Run Test and Deploy to Render
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Set up Ruby
+              uses: ruby/setup-ruby@v1
+              with:
+                  ruby-version: 2.7
+
+            - name: Install dependencies
+              run: |
+                  gem install bundler
+                  bundle install
+
+            - name: Run tests
+              run: rails test
+
+#     deploy:
+#         needs: test
+#         runs-on: ubuntu-latest
+
+#         steps:
+#             - uses: actions/checkout@v2
+
+#             - name: Set up Ruby
+#               uses: ruby/setup-ruby@v1
+#               with:
+#                   ruby-version: 2.7
+
+#             - name: Install dependencies
+#               run: |
+#                   gem install bundler
+#                   bundle install
+
+#             - name: Deploy to Render
+#               run: |
+#                   render deploy --local-dir public --config render.yaml
+#               env:
+#                   RENDER_TOKEN: ${{ secrets.RENDER_TOKEN }}
+#                   RENDER_EMAIL: ${{ secrets.RENDER_EMAIL }}
+#                   RENDER_PROJECT: ${{ secrets.RENDER_PROJECT }}
+#                   RENDER_BRANCH: ${{ github.ref }}
+
+ 
+#  The workflow file is divided into two jobs:  test  and  deploy . The  test  job runs the test suite using RSpec, while the  deploy  job deploys the application to Render. 
+#  The  test  job uses the  ruby/setup-ruby  action to set up Ruby 2.7. It then installs the dependencies using Bundler and runs the test suite using RSpec. 
+#  The  deploy  job also uses the  ruby/setup-ruby  action to set up Ruby 2.7. It then installs the dependencies using Bundler and deploys the application to Render using the  render deploy  command. The  render.yaml  file is used to configure the deployment. 
+#  The  RENDER_TOKEN ,  RENDER_EMAIL ,  RENDER_PROJECT , and  RENDER_BRANCH  environment variables are set using GitHub Secrets. The  RENDER_TOKEN  secret is the Render API token, the  RENDER_EMAIL  secret is the email address associated with the Render account, the  RENDER_PROJECT  secret is the Render project ID, and the  RENDER_BRANCH  secret is the branch name. 
+#  The  RENDER_TOKEN  secret is created by following the steps in the  Render documentation. The  RENDER_EMAIL  secret is the email address associated with the
