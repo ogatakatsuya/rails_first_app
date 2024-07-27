@@ -1,4 +1,4 @@
-name: Run Test and Deploy to Render
+name: Run Test
 
 on:
     pull_request:
