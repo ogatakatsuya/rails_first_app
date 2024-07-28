@@ -72,6 +72,13 @@ GEM
     ast (2.4.2)
     backport (1.2.0)
     benchmark (0.3.0)
+    better_html (2.1.1)
+      actionview (>= 6.0)
+      activesupport (>= 6.0)
+      ast (~> 2.0)
+      erubi (~> 1.4)
+      parser (>= 2.4)
+      smart_properties
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -94,6 +101,13 @@ GEM
       reline (>= 0.3.1)
     diff-lcs (1.5.1)
     e2mmap (0.1.0)
+    erb_lint (0.5.0)
+      activesupport
+      better_html (>= 2.0.1)
+      parser (>= 2.7.1.4)
+      rainbow
+      rubocop
+      smart_properties
     erubi (1.13.0)
     ffi (1.17.0-arm64-darwin)
     ffi (1.17.0-x86_64-linux-gnu)
@@ -253,6 +267,18 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.31.3)
       parser (>= 3.3.1.0)
+    rubocop-performance (1.21.1)
+      rubocop (>= 1.48.1, < 2.0)
+      rubocop-ast (>= 1.31.1, < 2.0)
+    rubocop-rails (2.25.1)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.33.0, < 2.0)
+      rubocop-ast (>= 1.31.1, < 2.0)
+    rubocop-rake (0.6.0)
+      rubocop (~> 1.0)
+    rubocop-rspec (3.0.3)
+      rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     sassc (2.4.0)
@@ -268,6 +294,7 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     shellany (0.0.1)
+    smart_properties (1.17.0)
     solargraph (0.50.0)
       backport (~> 1.2)
       benchmark
@@ -333,6 +360,7 @@ DEPENDENCIES
   bootsnap (= 1.16.0)
   capybara (= 3.38.0)
   debug (= 1.7.1)
+  erb_lint
   guard (= 2.18.0)
   guard-minitest (= 2.4.6)
   importmap-rails (= 1.1.5)
@@ -344,6 +372,12 @@ DEPENDENCIES
   rails (= 7.0.4.3)
   rails-controller-testing (= 1.0.5)
   repl_type_completor (= 0.1.2)
+  rubocop
+  rubocop-ast
+  rubocop-performance
+  rubocop-rails
+  rubocop-rake
+  rubocop-rspec
   sassc-rails (= 2.1.2)
   selenium-webdriver (= 4.8.3)
   solargraph (= 0.50.0)
