@@ -39,13 +39,13 @@ group :test do
 end
 
 group :lint do
+  gem 'erb_lint'
   gem 'rubocop'
   gem 'rubocop-ast'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rake'
   gem 'rubocop-rspec'
-  gem 'erb_lint'
 end
 
 # Windows ではタイムゾーン情報用の tzinfo-data gem を含める必要があります
