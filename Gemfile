@@ -45,6 +45,7 @@ group :lint do
   gem 'rubocop-rails'
   gem 'rubocop-rake'
   gem 'rubocop-rspec'
+  gem 'erb_lint'
 end
 
 # Windows ではタイムゾーン情報用の tzinfo-data gem を含める必要があります
