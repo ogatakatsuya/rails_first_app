@@ -33,3 +33,10 @@ $ rails test
 
 詳しくは、[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
 を参考にしてください。
+
+## コミットする前に
+
+```sh
+rubocop -A
+erblint --lint-all -a
+```
