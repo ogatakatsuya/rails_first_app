@@ -5,5 +5,8 @@ en:
   flash:
     success:
       user_create: "Welcome to the Sample App!"
+      user_update: "Profile updated"
+      user_destroy: "User deleted"
     danger:
       user_login: "Invalid email/password combination"
+      please_log_in: "Please log in"
