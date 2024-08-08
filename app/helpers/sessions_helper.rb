@@ -3,13 +3,15 @@
 module SessionsHelper
   def log_in(user)
     session[:user_id] = user.id
+    session[:session_token] = user.session_token
   end
 
   def successful_login(user)
+    forwarding_url = session[:forwarding_url]
     reset_session
     remember user
     log_in(user)
-    redirect_to user
+    redirect_to forwarding_url || user
   end
 
   def failed_login
@@ -27,6 +29,10 @@ module SessionsHelper
         user
       end
     end
+  end
+
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
   end
 
   private
