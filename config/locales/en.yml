@@ -5,3 +5,5 @@ en:
   flash:
     success:
       user_create: "Welcome to the Sample App!"
+    danger:
+      user_login: "Invalid email/password combination"
