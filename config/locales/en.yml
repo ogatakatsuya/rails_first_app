@@ -7,6 +7,10 @@ en:
       user_create: "Welcome to the Sample App!"
       user_update: "Profile updated"
       user_destroy: "User deleted"
+      account_activation: "Account activated!"
     danger:
       user_login: "Invalid email/password combination"
       please_log_in: "Please log in"
+      invalid_activation: "Invalid activation link"
+    info:
+      check_email: "Please check your email to activate your account."
