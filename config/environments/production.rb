@@ -2,7 +2,7 @@
 
 require 'active_support/core_ext/integer/time'
 
-Rails.application.configure do
+Rails.application.configure do # rubocop:disable Metrics/BlockLength
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -83,6 +83,18 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require "syslog/logger"
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
+  # config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  host = 'https://rails-first-app-7zhang.onrender.com'
+  config.action_mailer.default_url_options = { host: }
+  ActionMailer::Base.smtp_settings = {
+    port: 587,
+    address: 'smtp.mailgun.org',
+    user_name: ENV.fetch('MAILGUN_SMTP_LOGIN', nil),
+    password: ENV.fetch('MAILGUN_SMTP_PASSWORD', nil),
+    domain: host,
+    authentication: :plain
+  }
 
   if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new($stdout)

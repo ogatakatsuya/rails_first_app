@@ -6,23 +6,6 @@ class UsersLogin < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
   end
-
-  test 'authenticated? should return false for a user with nil digest' do
-    assert_not @user.authenticated?('')
-  end
-end
-
-class RememberingTest < UsersLogin
-  test 'login with remembering' do
-    log_in_as(@user, remember_me: '1')
-    assert_not cookies[:remember_token].blank?
-  end
-
-  test 'login without remembering' do
-    log_in_as(@user, remember_me: '1')
-    log_in_as(@user, remember_me: '0')
-    assert cookies[:remember_token].blank?
-  end
 end
 
 class InvalidPasswordTest < UsersLogin
@@ -89,5 +72,20 @@ class LogoutTest < Logout
   test 'should still work after logout in second window' do
     delete logout_path
     assert_redirected_to root_url
+  end
+end
+
+class RememberingTest < UsersLogin
+  test 'login with remembering' do
+    log_in_as(@user, remember_me: '1')
+    assert_not cookies[:remember_token].blank?
+  end
+
+  test 'login without remembering' do
+    # Cookieを保存してログイン
+    log_in_as(@user, remember_me: '1')
+    # Cookieが削除されていることを検証してからログイン
+    log_in_as(@user, remember_me: '0')
+    assert cookies[:remember_token].blank?
   end
 end

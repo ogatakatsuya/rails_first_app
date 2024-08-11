@@ -5,13 +5,25 @@ class SessionsController < ApplicationController
 
   def new; end
 
-  def create
+  def create # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
     user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
-      successful_login(user)
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+      if user.activated?
+        forwarding_url = session[:forwarding_url]
+        reset_session
+        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+        log_in user
+        redirect_to forwarding_url || user
+      else
+        message  = 'Account not activated. '
+        message += 'Check your email for the activation link.'
+        flash[:warning] = message
+        redirect_to root_url
+      end
     else
-      failed_login
+      message = 'Invalid email/password combination'
+      flash.now[:danger] = message
+      render 'new', status: :unprocessable_entity
     end
   end
 
