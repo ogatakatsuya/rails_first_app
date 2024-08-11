@@ -82,7 +82,8 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
 
   # Use a different logger for distributed setups.
   # require "syslog/logger"
-  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")  config.action_mailer.raise_delivery_errors = true
+  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
+  # config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   host = 'https://rails-first-app-7zhang.onrender.com'
   config.action_mailer.default_url_options = { host: }
