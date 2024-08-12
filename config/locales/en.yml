@@ -9,12 +9,19 @@ en:
       user_destroy: "User deleted"
       account_activation: "Account activated!"
       password_reset: "Password has been reset."
+      micropost_created: "Micropost created"
+      micropost_deleted: "Micropost deleted"
     danger:
       user_login: "Invalid email/password combination"
       please_log_in: "Please log in"
       invalid_activation: "Invalid activation link"
       email_not_found: "Email address not found"
       password_reset_expired: "Password reset has expired"
+      please_log_in: "Please log in to access this page"
     info:
       check_email: "Please check your email to activate your account."
       password_reset_email: "Email sent with password reset instructions"
+  msg:
+    error:
+      file_extention_violation: "Please upload a valid image file."
+      file_size_violation: "Please upload a file smaller than 5MB."
