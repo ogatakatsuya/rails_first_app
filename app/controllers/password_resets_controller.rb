@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PasswordResetsController < ApplicationController
   include SessionsHelper
   before_action :get_user,   only: %i[edit update]
